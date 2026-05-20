@@ -17,7 +17,7 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    // Ajouter un livre simple
+    // Ajouter un livre
     public Book saveBook(Book book) {
         return bookRepository.save(book);
     }
