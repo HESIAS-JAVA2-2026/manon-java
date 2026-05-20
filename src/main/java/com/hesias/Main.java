@@ -46,6 +46,10 @@ public class Main implements CommandLineRunner {
         System.out.println("=== Tous les livres ===");
         System.out.println(bookService.getAllBooks());
 
+        // J'affiche les livres d'une bibliothèque grâce à son id
+        System.out.println("=== Livres de la bibliothèque avec son id ===");
+        System.out.println(bookService.getBooksByLibraryId(library.getId()).orElse(null));
+
         // Je cherche une bibliothèque par son nom
         System.out.println("=== Recherche bibliothèque par nom ===");
         System.out.println(libraryService.getLibraryByName("City Library"));

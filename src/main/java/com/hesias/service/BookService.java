@@ -6,18 +6,19 @@ import com.hesias.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
 
     private final BookRepository bookRepository;
 
-    // Injection du repository, Spring s'en occupe tout seul
+    // Injection du repository, Spring s'en occupe
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
-    // Ajouter un livre
+    // Ajouter un livre simple
     public Book saveBook(Book book) {
         return bookRepository.save(book);
     }
@@ -36,6 +37,11 @@ public class BookService {
     // Récupérer un livre avec son id
     public Book getBookById(Long id) {
         return bookRepository.findById(id).orElse(null);
+    }
+
+    // Récupérer les livres d'une bibliothèque avec son id
+    public Optional<List<Book>> getBooksByLibraryId(Long libraryId) {
+        return bookRepository.findAllByLibrary_Id(libraryId);
     }
 
     // Supprimer un livre
